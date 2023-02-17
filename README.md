@@ -1,5 +1,5 @@
-npm init -y
-npm install typescript
-npx tsc --init
-npm install tsx
+npm init -y </br>
+npm install typescript </br>
+npx tsc --init </br>
+npm install tsx </br>
 npx tsx src/Classe.ts
