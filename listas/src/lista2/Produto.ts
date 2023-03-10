@@ -27,6 +27,13 @@ class ProdutoEncapsulado {
             console.log('Preço inválido')
         }
     }
+    public getQtde(): number {
+        return this.qtde
+    }
+    public getPreco(): number {
+        return this.preco
+    }
+
     public comprar(x: number): void {
         this.qtde = this.qtde + x
     }
@@ -44,13 +51,16 @@ class ProdutoEncapsulado {
     }
 }
 // cria objeto da classe
-let obj1ProdutoEncapsulado = new ProdutoEncapsulado(1, "pão com mortadela", 2, 15.4)
-let obj2ProdutoEncapsulado = new ProdutoEncapsulado(2, "x-bacon", 1, 24.7)
+let obj1ProdutoEncapsulado = new ProdutoEncapsulado(1, "pão com mortadela", -2, 15.4)
+let obj2ProdutoEncapsulado = new ProdutoEncapsulado(2, "x-bacon", 1, -24.7)
 obj1ProdutoEncapsulado.setQtde(9)
 obj1ProdutoEncapsulado.setPreco(-15)
-
 obj1ProdutoEncapsulado.comprar(2)
+obj1ProdutoEncapsulado.mostra()
+
 obj2ProdutoEncapsulado.comprar(4)
 obj1ProdutoEncapsulado.subir(1)
 obj2ProdutoEncapsulado.descer(2)
+obj2ProdutoEncapsulado.mostra()
 
+console.log(`Qtde obj1 ${obj1ProdutoEncapsulado.getQtde()}`)
