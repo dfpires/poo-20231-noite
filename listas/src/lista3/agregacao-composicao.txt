@@ -1,0 +1,18 @@
+Associação entre classes
+Tipos de associação: todo / parte
+
+
+
+Agregação - diamante não preenchido
+a parte não depende do topo, são independentes, 
+se o todo for eliminado, a parte não será
+parte agrega o todo
+Ex: product é parte e CarItem é o todo
+
+Composição - diamante preenchido
+a parte depende do todo, são dependentes, 
+se o todo for eliminado, a parte será também
+parte está contida no todo
+CarItem é a parte o ShoppingCart é o todo
+
+	
