@@ -3,8 +3,13 @@ class Product {
     constructor(private name: string, private price: number){
 
     }
+    /* fazer os setters e getters */
     getPrice(): number{
         return this.price
+    }
+    /* método que converte o objeto em uma string */
+    toString(): string{
+        return `{Name: ${this.name} Price: ${this.price}}`
     }
 }
 // classe toda para a relação com o Product
@@ -16,30 +21,57 @@ class CarItem {
     calculatePrice(): number{
         return (this.quantity * this.product.getPrice())
     }
+    /* método que converte o objeto em uma string */
+    toString(): string{
+        return `{Product: ${this.product.toString()} Quantity: ${this.quantity} Total Item Price ${this.calculatePrice()}}`
+    }
 }
 
-let objProduct = new Product("bola de basquete", 100)
-let objCarItem = new CarItem(objProduct, 2)
-console.log(objCarItem.calculatePrice())
+let obj1Product = new Product("bola de basquete", 100)
+let obj2Product = new Product("Alexa", 400)
+let obj3Product = new Product("Caixa de som com bluetooth", 200)
+
+let obj1CarItem = new CarItem(obj1Product, 2)
+let obj2CarItem = new CarItem(obj2Product, 1)
+let obj3CarItem = new CarItem(obj3Product, 6)
 
 // class todo para a relação com CarItem
 class ShoppingCart {
-    constructor(private id: number, private items: CarItem[]){
+    constructor(private id: number, private carItens: CarItem[]){
 
     }
     // adiciona um CarItem dentro do ShoppingCart
     addItem(item:CarItem): void{
-        this.items.push(item)
+        this.carItens.push(item)
+    }
+
+    /* método que converte o objeto em uma string */
+    toString(): string{
+        // vamos percorrer o vetor usando EcmaScript 5/6 - JS
+        let saida: string = ""
+        this.carItens.forEach(item => {
+            saida = saida + "\n" + item.toString()
+        })
+         return `{ID: ${this.id} CarItens: ${saida} \n Total Price: ${this.calculateTotalPrice()}}`
+    }
+    calculateTotalPrice(): number {
+        let soma: number = 0
+        // percorre o vetor
+        this.carItens.forEach(item => {
+            soma += item.calculatePrice()
+        })
+        return soma
     }
 }
 
 let objShoppingCart = new ShoppingCart(1, []) // carrinho de compra iniciado vazio
-objShoppingCart.addItem(objCarItem)
-console.log(objShoppingCart)
-/* lição de casa 
-crie mais 2 produtos
-crie mais 3 itens do carrinho
-adicione os itens do carrinho no carrinho
-visualize o resultado
-tente mostrar os dados do produto ao visualizar os carrinho de compra
-*/
+objShoppingCart.addItem(obj1CarItem)
+objShoppingCart.addItem(obj2CarItem)
+objShoppingCart.addItem(obj3CarItem)
+
+console.log(objShoppingCart.toString())
+
+
+
+
+
