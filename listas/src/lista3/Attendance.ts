@@ -1,3 +1,4 @@
+import { CellPhone } from "./CellPhone";
 import { Client } from "./Client";
 import { Employee } from "./Employee";
 import { Service } from "./Service";
@@ -26,7 +27,12 @@ class Attendance {
     }
 
 }
-let objClient = new Client(1, "Carla", "123")
+let obj1CellPhone = new CellPhone(1, 16981267732, 'Claro')
+
+let objClient = new Client(1, "Carla", "123", obj1CellPhone) // cria cliente com 1 celular
+let obj2CellPhone = new CellPhone(2, 16981267789, 'Vivo')
+objClient.addCellPhone(obj2CellPhone) // cliente tem 2 celulares
+
 let objEmployee = new Employee(0, "Leticia", 222)
 let objService = new Service(100, "Escova", 80)
 
