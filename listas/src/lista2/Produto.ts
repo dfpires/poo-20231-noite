@@ -35,13 +35,13 @@ class ProdutoEncapsulado {
     }
 
     public comprar(x: number): void {
-        this.qtde = this.qtde + x
+        this.setQtde(this.qtde + x)
     }
     public vender(x: number): void {
         this.setQtde(this.qtde - x)
     }
     public subir(x: number): void {
-        this.preco += x
+        this.setPreco(this.preco + x)
     }
     public descer(x: number): void {
         this.setPreco(this.preco - x)

@@ -1,7 +1,9 @@
 // classe parte
 class Product {
-    constructor(private name: string, private price: number){
-
+    private name: string; private price: number
+    constructor( name: string, price: number){
+        this.name = name
+        this.price = price
     }
     /* fazer os setters e getters */
     getPrice(): number{
@@ -15,9 +17,12 @@ class Product {
 // classe toda para a relação com o Product
 // classe parte para a relação com o ShoppingCart
 class CarItem {
-    constructor(private product: Product, private quantity: number){
-
+    private product: Product; // agregação
+    private quantity: number
+    constructor(product: Product, quantity: number){
+        this.product = product; this.quantity = quantity;
     }
+
     calculatePrice(): number{
         return (this.quantity * this.product.getPrice())
     }
@@ -37,8 +42,11 @@ let obj3CarItem = new CarItem(obj3Product, 6)
 
 // class todo para a relação com CarItem
 class ShoppingCart {
-    constructor(private id: number, private carItens: CarItem[]){
+    private id: number;
+    private carItens: CarItem[] // vetor de itens do carrinho
 
+    constructor(id: number, carItens: CarItem[]){
+        this.id = id; this.carItens = carItens
     }
     // adiciona um CarItem dentro do ShoppingCart
     addItem(item:CarItem): void{

@@ -1,6 +1,7 @@
 class Rio {
 
     constructor(public nome: string, public nivel: number, public poluido: boolean){
+        
     }
     mostra(): void{
         console.log(`Nome: ${this.nome} Nível: ${this.nivel} Poluído: ${this.poluido ? 'sim': 'não'}`)

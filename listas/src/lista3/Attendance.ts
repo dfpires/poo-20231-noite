@@ -5,9 +5,9 @@ import { Service } from "./Service";
 
 class Attendance {
     private id: number; private date: Date;
-    private client: Client
-    private employee: Employee
-    private service: Service
+    private client: Client // agregação
+    private employee: Employee // agregação
+    private service: Service // agregação
 
     constructor(id: number, date: Date, client: Client, employee: Employee, service: Service){
         this.id = id; this.date = date; this.client = client;
