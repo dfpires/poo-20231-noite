@@ -6,3 +6,7 @@ criar a pasta src
 criar o arquivo Classe.ts
 alterar o arquivo tsconfig.json, tirando o comentário da linha "strictPropertyInitialization": true e trocar true por false  
 npx tsx src/Classe.ts
+<br/>
+<br/>
+<br/>
+https://pesquisa.codigofonte.com.br/2023
