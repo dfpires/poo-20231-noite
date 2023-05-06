@@ -15,6 +15,6 @@ model Product {
   description  String
   price        Decimal
   quantity     Int   
-  created_at   DateTime
+  created_at   DateTime 
   @@map("product")
 }

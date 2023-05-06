@@ -46,6 +46,53 @@ server.get('/product/:description', async (request) => {
     return product
 })
 
+// cria rota para inserir produto
+server.post('/product', async (request) => {
+        // cria objeto zod para definir esquema de dados do frontend
+        const productBody = z.object({
+            description: z.string(),
+            price: z.number(),
+            quantity: z.number()
+        })
+        // recupera os dados do frontend
+        const {description, price, quantity} = productBody.parse(request.body)
+        // insere o produto no banco de dados
+        const newProduct = prisma.product.create({
+            data: {
+                description: description,
+                price: price,
+                quantity: quantity,
+                created_at: new Date()
+            }
+        })
+        return newProduct
+})
+
+// altera a quantidade do produto a partir de uma compra
+server.patch('/product/compra', async (request) => {
+    // cria objeto zod
+    const compraBody = z.object({
+        id: z.string().uuid(),
+        quantity: z.number()
+    })
+    // recupera dados do frontend
+    const {id, quantity} = compraBody.parse(request.body)
+    // atualiza o quantity
+    const productUpdated = prisma.product.update({
+        where: {
+            id: id
+        },
+        data: {
+            quantity: {
+                increment: quantity
+            }
+        }
+    })
+    return productUpdated
+})
+
+
+
 // vamos subir o servidor
 server.listen({
     port: 3333
