@@ -10,3 +10,5 @@ npx tsx src/Classe.ts
 <br/>
 <br/>
 https://pesquisa.codigofonte.com.br/2023
+<br/>
+https://youtu.be/nVPVFLAT15I
