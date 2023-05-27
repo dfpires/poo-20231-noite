@@ -39,38 +39,19 @@
     </nav>
     <div class="container">
         <form>
-            <input id="id" hidden/>
             <div class="mb-3 w-50 mt-4">
-                <label for="description" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="description">
+                <select id="idSelecionado">  
+                </select>
             </div>
             <div class="mb-3 w-50">
                 <label for="quantity" class="form-label">Quantidade</label>
                 <input type="number" class="form-control" id="quantity">
             </div>
-            <div class="mb-3 w-50">
-                <label for="price" class="form-label">Preço</label>
-                <input type="number" class="form-control" id="price">
-            </div>
-            <button type="button" class="btn btn-primary" onclick="cadastrarProduto()"> 
+            <button type="button" class="btn btn-primary" onclick="comprar()"> 
                 Confirmar 
             </button>
         </form>
-        <table class="table mt-4">
-            <thead>
-                <tr>
-                    <th scope="col"> Descrição </th> 
-                    <th scope="col"> Preço </th> 
-                    <th scope="col"> Quantidade </th>
-                    <th scope="col"> Remoção </th>  
-                    <th scope="col"> Atualização </th>  
-                </tr>
-            </thead>
-            <tbody id="linhasTabela">
-
-            </tbody>
-        </table>
     </div>
-    <script src="products.js"> </script> 
+    <script src="compra.js"> </script> 
   </body>
 </html>

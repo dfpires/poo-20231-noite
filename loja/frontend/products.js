@@ -14,13 +14,18 @@ async function consultaProdutos(){
     let linhasTabela = ''
     produtos.forEach(produto => {
         linhasTabela += `<tr> <td> ${produto.description} </td> <td> ${produto.price} </td> <td> ${produto.quantity} </td> <td> 
-        <div onclick="remover('${produto.id}')"> <i class="bi bi-trash"></i> </div> 
-        </td> <td> <i class="bi bi-pencil"></i> </td> </tr>`
+        <div onclick="remover('${produto.id}')"> <i class="bi bi-trash"></i> </div> </td> <td> <div onclick="editar('${produto.id}', '${produto.description}', ${produto.price}, ${produto.quantity})" <i class="bi bi-pencil"></i> </div> </td> </tr>`
     })
     // vamos colocar o conteúdo na tabela
     document.getElementById("linhasTabela").innerHTML = linhasTabela
 }
 
+function editar(id, description, price, quantity){
+    document.getElementById("description").value = description
+    document.getElementById("price").value = price
+    document.getElementById("quantity").value = quantity
+    document.getElementById("id").value = id
+}
 async function remover(id){
     const confirma = confirm('Deseja realmente remover o produto?')
     if (!confirma){
@@ -45,22 +50,33 @@ async function cadastrarProduto(){
     const description = document.getElementById("description").value
     const price = Number(document.getElementById("price").value)
     const quantity = Number(document.getElementById("quantity").value)
+    const id = document.getElementById("id").value
+    let metodo
+    let url
+    if (id) { // tem o id
+        metodo = 'PUT'
+        url = `http://localhost:3333/product/id/${id}` 
+        document.getElementById("id").value = ''
+    }
+    else {
+        metodo = 'POST'
+        url = `http://localhost:3333/product`
+    }
     // mostra o objeto json
     const product = {description, price, quantity}
-    console.log(product)
     // consome a api - verbo é post
-    const novoProduto = await fetch('http://localhost:3333/product', {
-        method: 'POST',
+    const novoProduto = await fetch(url, {
+        method: metodo,
         body: JSON.stringify(product),
         headers: {
             'Content-Type': 'application/json;charset="UTF-8"'
         }
     })
     .then(resposta => {
-        alert('Cadastro foi realizado com sucesso')
+        alert('Operação foi realizada com sucesso')
     })
     .catch(error => {
-        alert('Erro ao cadastrar')
+        alert('Erro durante a tentativa')
     })
     // atualiza a tabela no frontend
      consultaProdutos()
