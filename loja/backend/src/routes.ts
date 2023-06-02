@@ -101,10 +101,16 @@ export async function AppRoutes(server: FastifyInstance) {
             }
         })
         if (resp.count >= 1){
-            return 'Venda realizada'
+            let aux = {
+                "status": "Venda realizada com sucesso"
+            }
+            return aux
         }
         else {
-            return 'Estoque insuficiente'
+            let aux = {
+                "status": "Estoque insuficiente"
+            }
+            return aux
         }
     })
 
