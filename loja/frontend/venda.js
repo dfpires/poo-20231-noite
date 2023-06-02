@@ -24,3 +24,20 @@ async function recuperaQtde() {
     })
     document.getElementById("disponivel").innerHTML = product.quantity
 }
+
+async function vender(){
+    const id = document.getElementById("idSelecionado").value
+    const quantity = Number(document.getElementById("quantity").value)
+    const envia = {id, quantity}
+    const resp = await fetch('http://localhost:3333/product/venda', {
+        method: 'PATCH',
+        body: JSON.stringify(envia),
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        }
+    })
+    .then(resp => {
+        return resp.json()
+    }) 
+    alert(resp.status)
+}
