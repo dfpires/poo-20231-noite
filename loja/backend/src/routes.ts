@@ -13,22 +13,20 @@ export async function AppRoutes(server: FastifyInstance) {
 
     // rota para consultar os produtos que iniciam a descrição com uma palavra
     // enviada pelo frontend (na variável request)
-    server.get('/product/:description', async (request) => {
+    server.get('/product/:id', async (request) => {
         // precisamos utilizar um esquema de tipo de dados para tratar tipo recebido do usuário
         // dependência ZOD
         // criando o objeto ZOD para a descrição
-        const descriptionParam = z.object({
-            description: z.string()
+        const idParam = z.object({
+            id: z.string().uuid()
         })
         // obtem o valor de description no parâmetro da rota
-        const {description} = descriptionParam.parse(request.params)
+        const {id} = idParam.parse(request.params)
         // faz a consulta no banco de dados
         // select * from product where description = %description
-        const product = prisma.product.findMany({
+        const product = prisma.product.findFirst({
             where: {
-                description: {
-                    startsWith: description
-                }
+                id
             }
         })
         return product
