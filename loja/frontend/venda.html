@@ -40,14 +40,17 @@
     <div class="container">
         <form>
             <div class="mb-3 w-50 mt-4">
-                <select id="idSelecionado">  
+                <select id="idSelecionado" onChange="recuperaQtde()">  
                 </select>
             </div>
             <div class="mb-3 w-50">
                 <label for="quantity" class="form-label">Quantidade</label>
                 <input type="number" class="form-control" id="quantity">
             </div>
-            <button type="button" class="btn btn-primary" onclick="comprar()"> 
+            <div>
+                Quantidade disponível <span id="disponivel"> </span>
+            </div>
+            <button type="button" class="mt-4 btn btn-primary" onclick="vender()"> 
                 Confirmar 
             </button>
         </form>
